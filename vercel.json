@@ -1,0 +1,20 @@
+{
+    "rewrites": [
+      {
+        "source": "/api/analyze",
+        "destination": "https://lungcancerprediction-hs80.onrender.com/api/analyze"
+      }
+    ],
+    "headers": [
+      {
+        "source": "/*",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      }
+    ]
+  }
+  

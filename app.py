@@ -1,23 +1,22 @@
-# %%writefile app.py
 from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS
 from tensorflow.keras.models import load_model
 import numpy as np
 from PIL import Image
-import io
+import os
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
-# Load the trained model
+# Load the trained model (ensure lung_cancer_model.h5 is in the project root)
 model = load_model('lung_cancer_model.h5')
 
-# Define your class names (ensure the order matches your training)
+# Class names (order must match your training labels)
 class_names = ['Normal', 'Adenocarcinoma', 'Squamous', 'Large cell carcinoma']
 
 def preprocess_image(image, target_size=(224, 224)):
-    # Ensure image is RGB
     if image.mode != "RGB":
         image = image.convert("RGB")
-    # Resize and normalize the image
     image = image.resize(target_size)
     image = np.array(image).astype("float32") / 255.0
     image = np.expand_dims(image, axis=0)
@@ -25,7 +24,6 @@ def preprocess_image(image, target_size=(224, 224)):
 
 @app.route('/')
 def index():
-    # Serve a simple template (you can create a templates/index.html later)
     return render_template('index.html')
 
 @app.route('/api/analyze', methods=['POST'])
@@ -53,5 +51,5 @@ def analyze():
     })
 
 if __name__ == '__main__':
-    # For development, use debug=True. For production, use a proper WSGI server.
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)

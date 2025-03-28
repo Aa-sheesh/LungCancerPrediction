@@ -1,4 +1,5 @@
-Flask==2.1.1
+Flask
+flask-cors
 tensorflow
-Pillow==9.0.1
-gunicorn==20.1.0  # Only needed for deployment (e.g., Heroku)
+Pillow
+gunicorn

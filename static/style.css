@@ -1,45 +1,44 @@
 /* Use Poppins as the primary font */
 body {
-    background-color: #f8f9fa;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  .container {
-    margin-top: 50px;
-    max-width: 800px;
-  }
-  
-  .card {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border: none;
-    border-radius: 10px;
-  }
-  
-  .card-header {
-    background-color: #007bff;
-    color: white;
-    border-bottom: none;
-    border-radius: 10px 10px 0 0;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .card-body {
-    padding: 30px;
-  }
-  
-  #result {
-    font-size: 1.2rem;
-  }
-  
-  canvas {
-    margin-top: 30px;
-  }
-  
-  #preview {
-    max-width: 100%;
-    margin-top: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
+  background-color: #f8f9fa;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  margin-top: 50px;
+  max-width: 800px;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border: none;
+  border-radius: 10px;
+}
+
+.card-header {
+  background-color: #007bff;
+  color: white;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  padding: 20px;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+#result {
+  font-size: 1.2rem;
+}
+
+canvas {
+  margin-top: 30px;
+}
+
+#preview {
+  max-width: 100%;
+  margin-top: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}

@@ -10,7 +10,7 @@ document.getElementById('imageInput').addEventListener('change', function(e) {
       const preview = document.getElementById('preview');
       preview.src = e.target.result;
       preview.style.display = "block";
-    }
+    };
     reader.readAsDataURL(file);
   }
 });
@@ -45,12 +45,12 @@ document.getElementById('uploadForm').addEventListener('submit', function(e) {
       reportData += "Probabilities:\n";
       const labels = ['Normal', 'Adenocarcinoma', 'Squamous', 'Large cell carcinoma'];
       data.probabilities.forEach((p, idx) => {
-        reportData += labels[idx] + ": " + (p * 100).toFixed(2) + "%\n";
+        reportData += `${labels[idx]}: ${(p * 100).toFixed(2)}%\n`;
       });
       
       resultDiv.innerHTML =
-        "<strong>Prediction:</strong> " + data.class + "<br>" +
-        "<strong>Confidence:</strong> " + (data.confidence * 100).toFixed(2) + "%";
+        `<strong>Prediction:</strong> ${data.class}<br>
+         <strong>Confidence:</strong> ${(data.confidence * 100).toFixed(2)}%`;
       document.getElementById('downloadBtn').style.display = "block";
       
       // Render Chart.js bar chart for probabilities

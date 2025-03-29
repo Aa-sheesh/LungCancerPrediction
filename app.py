@@ -1,20 +1,26 @@
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"  # Disable GPU usage in TensorFlow
 
-
-
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from tensorflow.keras.models import load_model
 import numpy as np
 from PIL import Image
-import os
+import logging
+
+# Set up basic logging
+logging.basicConfig(level=logging.INFO)
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-# Load the trained model (ensure lung_cancer_model.h5 is in the project root)
-model = load_model('lung_cancer_model.h5')
+try:
+    # Load the trained model (ensure lung_cancer_model.h5 is in the project root)
+    model = load_model('lung_cancer_model.h5')
+    app.logger.info("Model loaded successfully.")
+except Exception as e:
+    app.logger.error("Error loading model: %s", e)
+    raise e
 
 # Class names (order must match your training labels)
 class_names = ['Normal', 'Adenocarcinoma', 'Squamous', 'Large cell carcinoma']
@@ -41,6 +47,7 @@ def analyze():
     try:
         image = Image.open(file.stream)
     except Exception as e:
+        app.logger.error("Invalid image format: %s", e)
         return jsonify({'error': 'Invalid image format'}), 400
 
     processed_image = preprocess_image(image)
@@ -58,4 +65,3 @@ def analyze():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))  # Render uses dynamic ports
     app.run(host="0.0.0.0", port=port)
-

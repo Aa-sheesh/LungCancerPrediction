@@ -1,44 +1,79 @@
-/* Use Poppins as the primary font */
+/* Base styling using Poppins font */
 body {
   background-color: #f8f9fa;
   font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.container {
-  margin-top: 50px;
+/* Navbar styling */
+.navbar {
+  padding: 1rem 0;
+}
+.navbar-brand {
+  font-size: 1.25rem;
+}
+
+/* Main container */
+main.container {
   max-width: 800px;
 }
 
+/* Card styling */
 .card {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   border: none;
   border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
 }
-
+.card:hover {
+  transform: translateY(-5px);
+}
 .card-header {
   background-color: #007bff;
-  color: white;
-  border-bottom: none;
-  border-radius: 10px 10px 0 0;
+  padding: 1.5rem;
   text-align: center;
-  padding: 20px;
 }
-
+.card-header h2 {
+  font-size: 1.75rem;
+}
 .card-body {
-  padding: 30px;
+  padding: 2rem;
 }
 
-#result {
-  font-size: 1.2rem;
-}
-
-canvas {
-  margin-top: 30px;
-}
-
+/* Image preview styling */
 #preview {
   max-width: 100%;
-  margin-top: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
+}
+
+/* Result text styling */
+#result {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+/* Chart container */
+canvas {
+  margin-top: 2rem;
+}
+
+/* Button styling overrides */
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  transition: background-color 0.3s;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  transition: background-color 0.3s;
+}
+.btn-success:hover {
+  background-color: #1e7e34;
 }

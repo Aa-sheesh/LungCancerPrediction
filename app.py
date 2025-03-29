@@ -1,3 +1,8 @@
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"  # Disable GPU usage in TensorFlow
+
+
+
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from tensorflow.keras.models import load_model
@@ -50,6 +55,7 @@ def analyze():
         'probabilities': prediction[0].tolist()
     })
 
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=False)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))  # Render uses dynamic ports
+    app.run(host="0.0.0.0", port=port)
+

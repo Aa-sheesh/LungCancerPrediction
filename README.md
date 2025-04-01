@@ -7,7 +7,7 @@ This web app helps you detect what type of lung cancer you have with 92% accurac
     ```
         python -m venv
         venv/Scripts/activate
-        pip install requirement.txt
+        pip install requirements.txt
         python app.py
     ```
 3. Go to the localhost on your web browser and enjoy your app.
